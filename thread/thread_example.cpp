@@ -2,10 +2,12 @@
 
 #include <thread>
 #include <mutex>
-
 #include <optional>
+#include <random>
 
 using std::ref;
+
+
 
 std::mutex airport_mutex;
 std::mutex waiting_planes_mutex;
@@ -39,8 +41,10 @@ void Waiting_planes::add_a_plane(Plane &plane)
 
 void add_plane_sometimes(Waiting_planes &waiting_planes, bool &stop_thread)
 {
-	default_random_engine generator;
+	random_device rd;
+	default_random_engine generator(rd());
 	uniform_int_distribution<int> distribution(100, 800);
+
 	while (!stop_thread)
 	{
 		std::this_thread::sleep_for(3s);
@@ -75,7 +79,7 @@ int main()
 	std::thread airport_thread(airport_control, std::ref(airport), std::ref(waiting_planes), std::ref(stop_thread));
 	std::thread add_plane(add_plane_sometimes, std::ref(waiting_planes), ref(stop_thread));
 
-	while (1)
+	while (true)
 	{
 		string name;
 		cin >> name;
@@ -90,12 +94,12 @@ int main()
 		waiting_planes.add_a_plane(plane);
 	}
 
-	if (airport_thread.joinable())
+// No required here	if (airport_thread.joinable())
 	{
 		airport_thread.join();
 	}
 
-	if (add_plane.joinable())
+// No required here	if (add_plane.joinable())
 	{
 		add_plane.join();
 	}

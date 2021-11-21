@@ -17,6 +17,7 @@ using std::endl;
 using std::ostream;
 using std::optional;
 using std::nullopt;
+using std::random_device;
 using std::default_random_engine;
 using std::uniform_int_distribution;
 using namespace std::chrono_literals;

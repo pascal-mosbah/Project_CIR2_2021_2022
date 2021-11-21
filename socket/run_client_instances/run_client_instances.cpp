@@ -9,11 +9,14 @@
 #endif
 
 using std::default_random_engine;
-using std::string;
-using std::to_string;
+using std::random_device;
 using std::uniform_int_distribution;
 
-default_random_engine generator;
+using std::string;
+using std::to_string;
+
+random_device rd;
+default_random_engine generator(rd());
 uniform_int_distribution<int> distribution(100, 800);
 
 string add_plane()
@@ -39,7 +42,7 @@ int main()
           ++count;
      }
 #ifdef _WIN32
-     string command{ "start ..\\bin\\socket_example_client 0"};
+     string command{"start ..\\bin\\socket_example_client 0"};
 #else
      string command{"../bin/socket_example_client 0"};
 #endif
