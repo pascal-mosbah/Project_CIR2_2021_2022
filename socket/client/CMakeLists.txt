@@ -13,10 +13,10 @@ set(Boost_USE_MULTITHREADED ON)
 set(Boost_USE_STATIC_RUNTIME OFF)
 
 IF(MSVC)
-	SET(BOOST_ROOT "C:/local/boost_1_77_0")
+	SET(BOOST_ROOT "${PROJECT_SOURCE_DIR}/../../boost_1_77_0")
 ENDIF()
 
-find_package(Boost 1.70 REQUIRED COMPONENTS system thread regex serialization)
+find_package(Boost 1.77 REQUIRED COMPONENTS system thread regex serialization)
 IF(Boost_FOUND)
   INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
   target_link_directories(socket_example_client PUBLIC ${Boost_LIBRARY_DIRS})
