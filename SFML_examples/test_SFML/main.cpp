@@ -8,7 +8,7 @@ using namespace std;
 using namespace sf;
 
 #ifdef _MSC_VER 
-#define _PATH_IMG_ "../../../img/"
+#define _PATH_IMG_ "../../../../../img/"
 #else
 #define _PATH_IMG_ "../img/"
 #endif

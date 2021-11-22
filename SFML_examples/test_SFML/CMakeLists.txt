@@ -11,9 +11,6 @@ set(CompilerFlags
         )
 
 if(MSVC)
-    foreach(CompilerFlag ${CompilerFlags})
-        string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
-    endforeach()
 	set(SFML_STATIC_LIBRARIES TRUE)
 	set(SFML_DIR "${PROJECT_SOURCE_DIR}/../../SFML-2.5.1-static/lib/cmake/SFML")
 endif()

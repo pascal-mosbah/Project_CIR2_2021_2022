@@ -12,12 +12,7 @@ set(CompilerFlags
         )
 
 if(MSVC)
-    foreach(CompilerFlag ${CompilerFlags})
-        string(REPLACE "/MD" "/MT" ${CompilerFlag} "${${CompilerFlag}}")
-        string(REPLACE "/W3" "/W4" ${CompilerFlag} "${${CompilerFlag}}")
-        set(CompilerFlag "${CompilerFlag} /std:c++17")
-    endforeach()
-    
+	set(CMAKE_CXX_STANDARD 17)
 	set(SFML_STATIC_LIBRARIES TRUE)
 	set(SFML_DIR "${PROJECT_SOURCE_DIR}/../../SFML-2.5.1-static/lib/cmake/SFML")
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
