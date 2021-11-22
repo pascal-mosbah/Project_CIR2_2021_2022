@@ -39,7 +39,7 @@ int main() {
 
 	Animation_setting animation_runner = {204, 1024, 102 };
 
-	Follower runner("../../../../../img/runner.png", animation_runner, 50, 10,	102, 115, 0.3f);
+	Follower runner(path_image+"runner.png", animation_runner, 50, 10,	102, 115, 0.3f);
 /********************************/
 /********************************/
 	sf::IntRect rect_circle;
@@ -59,12 +59,12 @@ int main() {
 	constexpr int shift_x_circle = 100;
 	constexpr int shift_y_circle = 10;
 
-	Follower circle("../../../../..//img/sprites_final.png", animation_circle, 
+	Follower circle(path_image+"sprites_final.png", animation_circle,
 	100, 10, 300, 300, 0.15f);
 
 /********************************/
 
-	Leader car("../../../../../img/car.png", 790, 1215);
+	Leader car(path_image+"car.png", 790, 1215);
 
 	car.add_followers(runner);
 	car.add_followers(circle);

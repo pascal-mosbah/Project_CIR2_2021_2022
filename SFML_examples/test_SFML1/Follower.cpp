@@ -17,7 +17,7 @@ Follower::Follower(const std::string &filename,
     rect_.width = width;
     rect_.height = height;
 
-    if (!image_.loadFromFile(path_image + filename))
+    if (!image_.loadFromFile(filename))
     {
         std::cerr << "Cannot load picture : " << path_image + filename << std::endl;
         exit(EXIT_FAILURE); // On ferme le programme

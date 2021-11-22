@@ -8,9 +8,9 @@ Leader::Leader(const std::string &filename, const float &x, const float &y,
                const float &scale)
     : x_(x), y_(y), angle_(0), speed_(0)
 {
-    if (!image_.loadFromFile(path_image + filename))
+    if (!image_.loadFromFile(filename))
     {
-        std::cerr << "Cannot load picture : " << path_image + filename << std::endl;
+        std::cerr << "Cannot load picture : " << filename << std::endl;
         exit(EXIT_FAILURE); // On ferme le programme
     }
     sprite_.setTexture(image_);
