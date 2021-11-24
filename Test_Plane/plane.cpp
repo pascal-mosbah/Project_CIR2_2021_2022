@@ -36,7 +36,7 @@ void update_plane(Plane &plane, bool &stop_thread)
 {
     while (!stop_thread)
     {
-        std::this_thread::sleep_for(3s);
+        std::this_thread::sleep_for(1s);
         plane.update();
     }
 }
