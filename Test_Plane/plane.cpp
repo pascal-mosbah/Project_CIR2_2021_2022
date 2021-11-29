@@ -17,8 +17,10 @@ class Plane
 public:
     Plane()
     {
+        std::cout<<"Thread creation"<<std::endl;
         t = std::thread(update_plane, std::ref(*this), std::ref(stop_thread));
     }
+    
     void update()
     {
         std::cout << x++ << std::endl;
@@ -43,7 +45,8 @@ void update_plane(Plane &plane, bool &stop_thread)
 
 int main()
 {
-    Plane plane;
+    Plane plane1;
+    Plane plane2;
     int a;
     std::cin >> a;
     return EXIT_SUCCESS;

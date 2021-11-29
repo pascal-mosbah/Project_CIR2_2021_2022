@@ -9,7 +9,7 @@
 #ifdef _MSC_VER 
 #define _PATH_IMG_ "../../../img/"
 #else
-#define _PATH_IMG_ "../img/"
+#define _PATH_IMG_ "../../../img/"
 #endif
 
 constexpr float sliced_time = 0.08f;

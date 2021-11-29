@@ -5,4 +5,5 @@ project(SFML)
 add_subdirectory(test_SFML)
 add_subdirectory(test_SFML1)
 add_subdirectory(test_SFML2)
+add_subdirectory(test_SFML3)
 
