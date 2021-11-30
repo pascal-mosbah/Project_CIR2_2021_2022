@@ -5,7 +5,7 @@ Plane::Plane(const float &radius, const float &init_angle, const float &altitude
                                                                                                         radius_(radius),
                                                                                                         x_(radius * cos(init_angle) + x_center),
                                                                                                         y_(radius * sin(init_angle) + y_center),
-                                                                                                        omega_(speed / radius),
+                                                                                                        omega_(speed / (2. * M_PI* radius)),
                                                                                                         altitude_(altitude),
                                                                                                         initial_clock_(high_resolution_clock::now())
 {
