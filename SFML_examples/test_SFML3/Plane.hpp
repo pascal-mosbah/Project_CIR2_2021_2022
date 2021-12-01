@@ -11,7 +11,7 @@ using std::chrono::milliseconds;
 using namespace std::chrono_literals;
 
 
-constexpr float incr = M_PI / 5;
+constexpr float incr = static_cast<float>(M_PI / 5.);
 constexpr unsigned WINDOW_SIZE_X = 800, WINDOW_SIZE_Y = 800;
 
 constexpr float x_center = WINDOW_SIZE_X / 2.;

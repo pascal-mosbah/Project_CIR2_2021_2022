@@ -10,7 +10,7 @@ using namespace std;
 using namespace sf;
 
 #ifdef _MSC_VER
-#define _PATH_IMG_ "../../../img/"
+#define _PATH_IMG_ "../../../../../img/"
 #else
 #define _PATH_IMG_ "../../../img/"
 #endif
@@ -96,18 +96,19 @@ int main(){
 		std::cerr << "Cannot load picture : " << filename << std::endl;
 		exit(EXIT_FAILURE); // On ferme le programme
 	}
-
-	planes.push_back(make_unique<Plane_with_sprite>(100.f, 0.f, 1000, speed, plane_image));
-	planes.push_back(make_unique<Plane_with_sprite>(200.f, 45.f, 1000, speed * 2, plane_image));
-	planes.push_back(make_unique<Plane_with_sprite>(300.f, 90.f, 1100, speed * 3, plane_image));
-	planes.push_back(make_unique<Plane_with_sprite>(400.f, 135.f, 1200, speed * 4, plane_image));
+	
+	planes.push_back(make_unique<Plane_with_sprite>(100.f, 0.f, 1000.f, speed, plane_image));
+	planes.push_back(make_unique<Plane_with_sprite>(200.f, 45.f, 1000.f, speed * 2, plane_image));
+	planes.push_back(make_unique<Plane_with_sprite>(300.f, 90.f, 1100.f, speed * 3, plane_image));
+	planes.push_back(make_unique<Plane_with_sprite>(400.f, 135.f, 1200.f, speed * 4, plane_image));
 	
 	std::thread UI(visualization, std::ref(planes));
 
-int i;
+	int i = 1;
 	cin >> i;
-	planes.push_back(make_unique<Plane_with_sprite>(50.f, 180.f, 1400, speed * 4, plane_image));
+	if (i) {
+		planes.push_back(make_unique<Plane_with_sprite>(50.f, 180.f, 1400.f, speed * 4, plane_image));
+	}
 
 	UI.join();
-
 }
