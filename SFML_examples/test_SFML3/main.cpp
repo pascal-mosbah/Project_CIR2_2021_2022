@@ -36,7 +36,7 @@ struct Plane_with_sprite : public Plane
 	}
 };
 
-int main()
+void visualization(std::vector<unique_ptr<Plane_with_sprite>> &planes)
 {
 	// Fenêtre
 	RenderWindow app(VideoMode(WINDOW_SIZE_X, WINDOW_SIZE_Y, 32), "My Camera");
@@ -58,23 +58,6 @@ int main()
 
 	/********************************/
 
-	Texture plane_image;
-
-	auto filename = path_image + "Daco_5572966.png";
-
-	if (!plane_image.loadFromFile(filename))
-	{
-		std::cerr << "Cannot load picture : " << filename << std::endl;
-		exit(EXIT_FAILURE); // On ferme le programme
-	}
-
-	std::vector<unique_ptr<Plane_with_sprite>> planes;
-	constexpr float speed = 10;
-
-	planes.push_back(make_unique<Plane_with_sprite>(100.f, 0.f, 1000, speed, plane_image));
-	planes.push_back(make_unique<Plane_with_sprite>(200.f, 45.f, 1000, speed * 2, plane_image));
-	planes.push_back(make_unique<Plane_with_sprite>(300.f, 90.f, 1100, speed * 3, plane_image));
-	planes.push_back(make_unique<Plane_with_sprite>(400.f, 135.f, 1200, speed * 4, plane_image));
 
 	while (app.isOpen()) // Boucle principale
 	{
@@ -99,6 +82,32 @@ int main()
 
 		app.display();
 	}
+}
 
-	return EXIT_SUCCESS;
+int main(){
+		std::vector<unique_ptr<Plane_with_sprite>> planes;
+	constexpr float speed = 10;
+	Texture plane_image;
+
+	auto filename = path_image + "Daco_5572966.png";
+
+	if (!plane_image.loadFromFile(filename))
+	{
+		std::cerr << "Cannot load picture : " << filename << std::endl;
+		exit(EXIT_FAILURE); // On ferme le programme
+	}
+
+	planes.push_back(make_unique<Plane_with_sprite>(100.f, 0.f, 1000, speed, plane_image));
+	planes.push_back(make_unique<Plane_with_sprite>(200.f, 45.f, 1000, speed * 2, plane_image));
+	planes.push_back(make_unique<Plane_with_sprite>(300.f, 90.f, 1100, speed * 3, plane_image));
+	planes.push_back(make_unique<Plane_with_sprite>(400.f, 135.f, 1200, speed * 4, plane_image));
+	
+	std::thread UI(visualization, std::ref(planes));
+
+int i;
+	cin >> i;
+	planes.push_back(make_unique<Plane_with_sprite>(50.f, 180.f, 1400, speed * 4, plane_image));
+
+	UI.join();
+
 }
